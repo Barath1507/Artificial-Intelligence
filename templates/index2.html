@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Satisfaction Classification</title>
+  
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .left-section,
+    .right-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .left-section img,
+    .right-section img {
+      max-width: 100%;
+      height: auto;
+      transform: scale(1.0);
+      transition: transform 0.7s ease;
+    }
+
+    .left-section img:hover,
+    .right-section img:hover {
+      transform: scale(2.0);
+    }
+
+    .login {
+      flex: 1;
+      text-align: center;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+
+    .btn {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .prediction {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    
+  
+  </style>
+</head>
+
+<body>
+  <div class="left-section">
+    <img src="{{ url_for('static', filename='images/plane2.png') }}">
+  </div>
+  
+  
+  <div class="login">
+    <h1>Invistico Airline Customer Satisfaction Classification</h1>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict') }}" method="post">
+    <!--
+      <input type="text" name="satisfaction" placeholder="satisfaction" required="required"/>
+      <input type="text" name="Gender" placeholder="Gender" required="required" />
+      <input type="text" name="Customer_Type" placeholder="Customer Type" required="required" />
+      <input type="text" name="Age" placeholder="Age" required="required" />
+      <input type="text" name="Type_of_Travel" placeholder="Type of Travel" required="required" />
+      <input type="text" name="Class" placeholder="Class" required="required" />
+      
+      
+      <input type="number" name="Flight_Distance (1 to 1500)" placeholder="Flight Distance" required="required" />
+      
+      <input type="text" name="Gender" placeholder="Gender" required=" not required" />
+     
+      <input type="text" name="Gender" placeholder="Gender" required="required" />
+       -->
+      <input type="number" name="Inflight_entertainment" placeholder="Inflight entertainment" required="required" min="1" max="5" />
+      <input type="number" name="Seat_comfort" placeholder="Seat comfort" required="required" min="1" max="5" />
+      <input type="number" name="Ease_of_Online_booking" placeholder="Ease of Online booking" required="required" min="1" max="5" />
+      <input type="number" name="Online_support" placeholder="Online support" required="required" min="1" max="5" />
+       <!--
+      <input type="number" name="Departure_Arrival_time_convenient" placeholder="Departure/Arrival time convenient" required="required" />
+      <input type="number" name="Food_and_drink" placeholder="Food and drink" required="required" />
+      <input type="number" name="Gate_location" placeholder="Gate location" required="required" />
+     
+      <input type="number" name="Inflight_wifi_service" placeholder="Inflight wifi service" required="required" />
+      
+      
+     
+      <input type="number" name="On-board_service" placeholder="On-board service" required="required" />
+      <input type="number" name="Leg_room_service" placeholder="Leg room service" required="required" />
+      <input type="number" name="Baggage_handling" placeholder="Baggage handling" required="required" />
+      <input type="number" name="Checkin_service" placeholder="Check-in service" required="required" />
+      <input type="number" name="Cleanliness" placeholder="Cleanliness" required="required" />
+      <input type="number" name="Online_boarding" placeholder="Online boarding" required="required" />
+      <input type="text" name="Departure_Delay_in_Minutes" placeholder="Departure Delay in Minutes" required="required" />
+      <input type="text" name="Arrival_Delay_in_Minutes" placeholder="Arrival Delay in Minutes" required="required" />
+      -->
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    <br>
+    <br>
+    {{ prediction_text }}
+  </div>
+  <div class="right-section">
+    <img src="{{ url_for('static', filename='images/customer.jpeg') }}">
+  </div>
+</body>
+</html>

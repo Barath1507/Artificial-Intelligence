@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Satisfaction Classification</title>
+  
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<body>
+  <div class="left-section">
+    <img src=".jpg" alt="Airline Photo">
+  </div>
+  
+  <div class="login">
+    <h1>Customer Satisfaction Classification</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+      <!-- Input fields for customer satisfaction prediction -->
+      <!-- Add your input fields here -->
+        <input type="number" name="Inflight_entertainment" placeholder="Inflight entertainment" required="required" min="1" max="5" />
+        <input type="number" name="Seat_comfort" placeholder="Seat comfort" required="required" min="1" max="5" />
+        <input type="number" name="Ease_of_Online_booking" placeholder="Ease of Online booking" required="required" min="1" max="5" />
+        <input type="number" name="Online_support" placeholder="Online support" required="required" min="1" max="5" />
+        
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    <br>
+    <br>
+    {{ prediction_text }}
+  </div>
+  
+  <div class="right-section">
+    <img src="C:\Users\515203\Downloads\aiml iitk\project\New folder\templates\customer.jpeg">
+  </div>
+</body>
+</html>
