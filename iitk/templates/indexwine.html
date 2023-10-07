@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Predicting Wine Quality</title>
+  
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .left-section,
+    .right-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .left-section img,
+    .right-section img {
+      max-width: 40%;
+      height: auto;
+      transform: scale(1.0);
+      transition: transform 0.7s ease;
+    }
+
+    .left-section img:hover,
+    .right-section img:hover {
+      transform: scale(2.0);
+    }
+
+    .login {
+      flex: 1;
+      text-align: center;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+
+    .btn {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .prediction {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    
+  
+  </style>
+</head>
+
+<body>
+  <div class="left-section">
+    <img src="{{ url_for('static', filename='images/wine1.jpeg') }}">
+     <!--<img src="{{ url_for('static', filename='images/video4.jpeg') }}"> -->
+  </div>
+  
+  
+  <div class="login">
+    <h1>Analyzing Wine Quality Through Chemical Composition</h1>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict') }}" method="post">
+      <input type="number" name="fixed acidity" placeholder="fixed acidity" required="required" step="0.01" min="4.6" max= "15.9" />
+      <input type="number" name="volatile acidity" placeholder="volatile acidity" required="required" step="0.01" min="0.1" max= "1.6" />
+      <input type="number" name="citric acid" placeholder="citric acid" required="required" step="0.01" min="0.0" max= "1.0"/>
+      <input type="number" name="residual sugar" placeholder="residual sugar" required="required" step="0.01" min="0.9" max= "15.5" />
+      <input type="number" name="chlorides" placeholder="chlorides" required="required" step="0.0001" min="0.01" max= "0.61" />
+      <input type="number" name="free sulfur dioxide" placeholder="free sulfur dioxide" required="required" step="0.01" min="1" max= "72" />
+      <input type="number" name="total sulfur dioxide" placeholder="total sulfur dioxide" required="required" step="0.01" min="6" max= "289" />
+      <input type="number" name="density" placeholder="density" required="required" step="0.0001" min="0.990" max= "1.004" />
+      <input type="number" name="pH" placeholder="pH" required="required" step="0.01" min="2.7" max= "4.0" />
+      <input type="number" name="sulphates" placeholder="sulphates" required="required" step="0.01" min="0.3" max= "2.0" />
+      <input type="number" name="alcohol" placeholder="alcohol" required="required" step="0.01" min="8.4" max= "11.9" />
+      
+      
+      
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    <br>
+    <br>
+    {{ prediction_text }}
+  </div>
+  <div class="right-section">
+    <img src="{{ url_for('static', filename='images/wine2.gif') }}">
+  <!--  <img src="{{ url_for('static', filename='images/global3.jpeg') }}"> -->
+  </div>
+</body>
+</html>
+
